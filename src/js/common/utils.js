@@ -59,8 +59,8 @@ export const stripJcrContentPath = function (path) {
 export const normalizeJcrContentEncoding = function (path) {
   if (!path || typeof path !== 'string') return path
   const decodedMarker = '/' + JCR_CONTENT
-  const encodedMarker = '/' + encodeURIComponent(JCR_CONTENT)
-  const encodedRegex = new RegExp('(%2F|/)+jcr%3Acontent', 'ig')
+  const encodedMarker = encodeURIComponent(decodedMarker)
+  const encodedRegex = new RegExp('/jcr%3Acontent', 'ig')
   return path
     .replace(encodedRegex, encodedMarker)
     .replace(decodedMarker, encodedMarker)
