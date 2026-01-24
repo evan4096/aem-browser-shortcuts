@@ -9,14 +9,20 @@
 <body>
   <div class="popup-container">
     <h1>AEM Shortcuts</h1>
-    <nav class="shortcuts-list">
+    <nav class="shortcuts-list" id="shortcutsList">
       <button class="shortcut-btn" data-shortcut="edit">Edit</button>
       <button class="shortcut-btn" data-shortcut="preview">Preview</button>
       <button class="shortcut-btn" data-shortcut="sites">Sites</button>
-      <button class="shortcut-btn" data-shortcut="propezrties">Properties</button>
+      <button class="shortcut-btn" data-shortcut="properties">Properties</button>
       <button class="shortcut-btn" data-shortcut="crxde">CRXDE</button>
+      <button class="shortcut-btn" data-shortcut="modeljson">Model Json</button>
     </nav>
     <div class="status" id="status"></div>
+    <section class="about">
+      <h2>About</h2>
+      <p>Authors: Evan Stevens, Renaldas Szentiks</p>
+      <p><a href="https://github.com/evan4096/aem-browser-shortcuts">https://github.com/evan4096/aem-browser-shortcuts</a></p>
+    </section>
   </div>
   <script src="popup.js"></script>
 </body>

@@ -9,6 +9,7 @@ module.exports = {
     preview: path.resolve(__dirname, 'src/js/preview.js'),
     sites: path.resolve(__dirname, 'src/js/sites.js'),
     properties: path.resolve(__dirname, 'src/js/properties.js'),
+    modeljson: path.resolve(__dirname, 'src/js/modeljson.js'),
     popup: path.resolve(__dirname, 'src/popup/popup.js'),
   },
   output: {
