@@ -2,7 +2,7 @@
   "name": "aem-shortcuts",
   "version": "1.0.2",
   "description": "AEM Browser Shortcuts Chrome Extension",
-  "author": "Evan Stevens <evan@aworldalone.com>",
+  "author": "Evan Stevens <evan4096@users.noreply.github.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
     "clean": "rimraf dist/*",
     "build:js": "webpack --mode=production",
     "build:icons": "node scripts/generate-icons.js",
-    "build": "npm run build:icons && npm run build:js"
+    "build": "npm run build:icons && npm run build:js",
+    "watch": "webpack --mode=development --watch"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",

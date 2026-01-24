@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AEM Browser Shortcuts",
+  "homepage_url": "https://github.com/evan4096/aem-browser-shortcuts",
   "version": "1.0.2",
   "description": "Quick access to AEM shortcuts (CRXDE, Edit, Preview, Sites, Properties)",
   "permissions": [
