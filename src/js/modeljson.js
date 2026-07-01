@@ -1,8 +1,8 @@
-import { locateResource, normalizeJcrContentEncoding, requirePort } from "./common/utils";
+import { locateFullResource, normalizeJcrContentEncoding, requirePort } from "./common/utils";
 import { CONTENT_PATH, CRXDE_PATH, DEFAULT_PORT } from "./common/constants";
 
 const locationPath = window.location.pathname;
-let pagePath = locateResource();
+let pagePath = locateFullResource();
 
 if (locationPath === CRXDE_PATH) {
   const hash = window.location.hash || "";
