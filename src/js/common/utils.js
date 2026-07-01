@@ -253,3 +253,29 @@ export const constructFullScreenDialogUrl = function (resourcePath, resourceType
   if (!base) return null
   return base + '?page=true&resourceType=' + encodeURIComponent(resourceType)
 }
+
+/**
+ * When a component is selected/highlighted in the AEM page editor but no
+ * dialog is open yet, AEM renders an `#EditableToolbar` with a `data-path`
+ * pointing at the selected component's JCR path. Fetch that node's `.json`
+ * to read `sling:resourceType`, then return `{ resource, resourceType }`.
+ * Returns `false` when no component is selected or the fetch fails.
+ */
+export const locateSelectedEditorComponentInfo = async function () {
+  if (typeof document === 'undefined') return false
+
+  const toolbar = document.querySelector('#EditableToolbar button[data-path]')
+  const path = toolbar && toolbar.dataset && toolbar.dataset.path
+  if (!path || path.indexOf(CONTENT_PATH + '/') === -1) return false
+
+  try {
+    const response = await fetch(path + '.json')
+    if (!response.ok) return false
+    const data = await response.json()
+    const resourceType = data['sling:resourceType']
+    if (!resourceType) return false
+    return { resource: path, resourceType }
+  } catch (e) {
+    return false
+  }
+}

@@ -116,6 +116,7 @@ async function initPopup() {
     if (fullScreenDialogButton) {
       fullScreenDialogButton.style.display = 'none';
       const isEditorPage = url.pathname.startsWith(EDITOR_PATH);
+
       if (isEditorPage) {
         try {
           const [result] = await chrome.scripting.executeScript({
@@ -143,6 +144,9 @@ async function initPopup() {
                 }
                 if (path.indexOf(CONTENT_PATH + '/') !== -1) return true;
               }
+              const toolbar = document.querySelector('#EditableToolbar Button[data-path]');
+              if (toolbar && toolbar.dataset && toolbar.dataset.path &&
+                  toolbar.dataset.path.indexOf(CONTENT_PATH + '/') !== -1) return true;
               return false;
             }
           });
@@ -150,7 +154,7 @@ async function initPopup() {
             fullScreenDialogButton.style.display = 'block';
           }
         } catch (e) {
-          console.error('Script injection failed:', e);
+          // Script injection failed; leave button hidden
         }
       }
     }
