@@ -2,7 +2,8 @@ const TerserPlugin = require('terser-webpack-plugin')
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = {
+module.exports = (env, argv) => ({
+  devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   entry: {
     crxde: path.resolve(__dirname, 'src/js/crxde.js'),
     edit: path.resolve(__dirname, 'src/js/edit.js'),
@@ -10,6 +11,8 @@ module.exports = {
     sites: path.resolve(__dirname, 'src/js/sites.js'),
     properties: path.resolve(__dirname, 'src/js/properties.js'),
     modeljson: path.resolve(__dirname, 'src/js/modeljson.js'),
+    dialog: path.resolve(__dirname, 'src/js/dialog.js'),
+    fullscreendialog: path.resolve(__dirname, 'src/js/fullscreendialog.js'),
     popup: path.resolve(__dirname, 'src/popup/popup.js'),
   },
   output: {
@@ -18,7 +21,7 @@ module.exports = {
     clean: true
   },
   optimization: {
-    minimize: true,
+    minimize: argv.mode !== 'development',
     minimizer: [new TerserPlugin()],
   },
   target: 'web',
@@ -60,4 +63,4 @@ module.exports = {
       ]
     })
   ]
-}
+})

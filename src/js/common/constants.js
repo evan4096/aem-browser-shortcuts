@@ -9,6 +9,7 @@ export const PROPERTIES_PATH = "/mnt/overlay/wcm/core/content/sites/properties.h
 export const SITES_PATH = "/sites.html"
 export const ASSETS_PATH = "/assets.html"
 export const DAM_PATH = "/content/dam/"
+export const DIALOG_PATH = "/_cq_dialog.html"
 
 export const CRXDE_PORT = "8443"
 export const DEFAULT_PORT = false  // false will keep the current port

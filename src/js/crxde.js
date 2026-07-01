@@ -1,12 +1,11 @@
-import {locateResource, normalizeJcrContentEncoding, requirePort} from './common/utils';
+import {locateFullResource, normalizeJcrContentEncoding, requirePort} from './common/utils';
 import {
   CRXDE_PATH,
-  CRXDE_PORT,
   DEFAULT_PORT,
   JCR_CONTENT
 } from "./common/constants";
 
-let pagePath = locateResource();
+let pagePath = locateFullResource();
 if (pagePath) {
   const normalizedPath = normalizeJcrContentEncoding(pagePath);
   const hasJcrContent = /\/jcr(?:%3A|:)content/i.test(normalizedPath);
