@@ -1,4 +1,17 @@
-import {CRXDE_PATH, METADATA_PATH, JCR_CONTENT,PROPERTIES_PATH,SITES_PATH,EDITOR_PATH,ASSETDETAILS_PATH,ASSETS_PATH,CONTENT_PATH, DAM_PATH, DIALOG_PATH} from './constants'
+import {
+  CRXDE_PATH,
+  METADATA_PATH,
+  JCR_CONTENT,
+  PROPERTIES_PATH,
+  SITES_PATH,
+  EDITOR_PATH,
+  ASSETDETAILS_PATH,
+  ASSETS_PATH,
+  CONTENT_PATH,
+  DAM_PATH,
+  DIALOG_PATH,
+  JCR_CONTENT_NAMESPACE_MANGLING
+} from './constants'
 
 export const locateResource = function () {
 
@@ -132,11 +145,13 @@ export const stripJcrContentPath = function (path) {
 export const normalizeJcrContentEncoding = function (path) {
   if (!path || typeof path !== 'string') return path
   const decodedMarker = '/' + JCR_CONTENT
+  const mangledMarker = '/' + JCR_CONTENT_NAMESPACE_MANGLING
   const encodedMarker = '/' + encodeURIComponent(JCR_CONTENT)
   const encodedRegex = new RegExp('(%2F|/)+jcr%3Acontent', 'ig')
   return path
     .replace(encodedRegex, encodedMarker)
     .replace(decodedMarker, encodedMarker)
+    .replace(mangledMarker, encodedMarker)
 }
 
 function safeDecodePath(path) {
