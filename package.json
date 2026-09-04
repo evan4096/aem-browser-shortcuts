@@ -18,14 +18,14 @@
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",
     "babel-loader": "^9.2.1",
-    "copy-webpack-plugin": "^12.0.2",
+    "copy-webpack-plugin": "^14.0.0",
     "html-loader": "^5.0.0",
     "posthtml": "^0.16.6",
     "posthtml-inline-assets": "^3.1.0",
     "posthtml-loader": "^2.0.1",
     "posthtml-modules": "^0.9.0",
     "rimraf": "^6.0.1",
-    "sharp": "^0.33.5",
+    "sharp": "^0.35.0",
     "terser-webpack-plugin": "^5.3.11",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
