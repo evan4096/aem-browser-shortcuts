@@ -5,7 +5,7 @@ import {
   normalizeJcrContentEncoding,
   requirePort
 } from "./common/utils";
-import { CONTENT_PATH, CRXDE_PATH, DEFAULT_PORT } from "./common/constants";
+import { CONTENT_PATH, CRXDE_PATH, DEFAULT_PORT, REPOBROWSER_PATH } from "./common/constants";
 
 /* check if coming from editor with full resource identified */
 const info = locateOpenDialogInfo() || await locateSelectedEditorComponentInfo();
@@ -16,9 +16,9 @@ if (info && info.resource) {
   pagePath = locateFullResource();
 }
 
-/* check if coming from crx/de */
+/* check if coming from crx/de or the repository browser */
 const locationPath = window.location.pathname;
-if (locationPath === CRXDE_PATH) {
+if (locationPath === CRXDE_PATH || locationPath.startsWith(REPOBROWSER_PATH)) {
   const hash = window.location.hash || "";
   const rawPath = hash.replace(/^#/, "").replace(/\?.*$/, "");
   if (rawPath) {

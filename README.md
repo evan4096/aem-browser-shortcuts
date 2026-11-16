@@ -5,6 +5,7 @@ A Chrome extension that provides quick access to AEM (Adobe Experience Manager) 
 ## Features
 
 - **CRXDE**: Opens the current page in CRXDE Lite
+- **Repo Browser**: Opens the current page in the Granite Repository Browser (`/libs/granite/repobrowser/`)
 - **Edit**: Opens the current page in the AEM editor
 - **Preview**: Opens the current page in preview mode (WCM mode disabled)
 - **Sites**: Opens the current page in the Sites console
@@ -54,6 +55,7 @@ This will:
 src/
   js/
     crxde.js          # CRXDE shortcut
+    repobrowser.js    # Repo Browser shortcut
     edit.js           # Edit shortcut
     preview.js        # Preview shortcut
     sites.js          # Sites shortcut
