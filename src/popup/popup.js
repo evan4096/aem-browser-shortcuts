@@ -5,6 +5,7 @@ const shortcutsList = document.getElementById('shortcutsList');
 const statusEl = document.getElementById('status');
 
 const CRXDE_PATH = "/crx/de/index.jsp";
+const REPOBROWSER_PATH = "/libs/granite/repobrowser/";
 const EDITOR_PATH = "/editor.html";
 const ASSETDETAILS_PATH = "/assetdetails.html";
 const METADATA_PATH = "/mnt/overlay/dam/gui/content/assets/metadataeditor.external.html";
@@ -39,6 +40,7 @@ function isAuthorUrl(urlString) {
 
   const path = url.pathname;
   if (path === CRXDE_PATH) return true;
+  if (path.startsWith(REPOBROWSER_PATH)) return true;
   if (path === METADATA_PATH || path === PROPERTIES_PATH) return true;
   if (path.includes(DIALOG_PATH)) return true;
   if (path.startsWith(SITES_PATH)) return true;
@@ -100,6 +102,21 @@ async function initPopup() {
     const isDialogPage = url.pathname.includes(DIALOG_PATH);
     const isCrxdePage = url.pathname === CRXDE_PATH;
     const isModelJsonPage = url.pathname.endsWith(".model.json");
+
+    // On the repository browser, only CRXDE and Repo Browser apply to arbitrary
+    // repo paths; the /content-based shortcuts need a path under /content.
+    if (url.pathname.startsWith(REPOBROWSER_PATH)) {
+      const hashPath = decodeURIComponent(url.hash.replace(/^#/, "").replace(/\?.*$/, ""));
+      const isContentPath = hashPath.startsWith(CONTENT_PATH + "/");
+      if (!isContentPath) {
+        shortcutButtons.forEach(button => {
+          const name = button.getAttribute('data-shortcut');
+          if (name !== 'crxde' && name !== 'repobrowser') {
+            button.style.display = 'none';
+          }
+        });
+      }
+    }
 
     const dialogButton = document.querySelector('[data-shortcut="dialog"]');
     if (dialogButton) {

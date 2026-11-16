@@ -1,6 +1,7 @@
 export const CONTENT_PATH = "/content"
 export const DOT_HTML = ".html"
 export const CRXDE_PATH = "/crx/de/index.jsp"
+export const REPOBROWSER_PATH = "/libs/granite/repobrowser/"
 export const EDITOR_PATH = "/editor.html"
 export const ASSETDETAILS_PATH = "/assetdetails.html"
 export const JCR_CONTENT = "jcr:content"

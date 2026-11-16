@@ -6,6 +6,7 @@ module.exports = (env, argv) => ({
   devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   entry: {
     crxde: path.resolve(__dirname, 'src/js/crxde.js'),
+    repobrowser: path.resolve(__dirname, 'src/js/repobrowser.js'),
     edit: path.resolve(__dirname, 'src/js/edit.js'),
     preview: path.resolve(__dirname, 'src/js/preview.js'),
     sites: path.resolve(__dirname, 'src/js/sites.js'),

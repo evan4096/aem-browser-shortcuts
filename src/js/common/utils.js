@@ -1,5 +1,6 @@
 import {
   CRXDE_PATH,
+  REPOBROWSER_PATH,
   METADATA_PATH,
   JCR_CONTENT,
   PROPERTIES_PATH,
@@ -19,7 +20,7 @@ export const locateResource = function () {
   const hash = window.location.hash
   const search = window.location.search
 
-  if (location === CRXDE_PATH) {
+  if (location === CRXDE_PATH || location.startsWith(REPOBROWSER_PATH)) {
     return stripHtmlAndSelectors(hash.replace('#', '').replace(/\?.*$/, '').replace(new RegExp('/' + encodeURIComponent(JCR_CONTENT) + '.*$'), ''))
   } else if (location === METADATA_PATH) {
     return search.replace(/^.*item=(.*)&?.*$/, '$1')
