@@ -1,7 +1,7 @@
 import {
   locateFullResource,
   locateOpenDialogInfo, locateSelectedEditorComponentInfo,
-  normalizeJcrContentEncoding,
+  normalizeJcrContentUnencoded,
   requirePort
 } from './common/utils';
 import {
@@ -19,6 +19,6 @@ if (info && info.resource) {
 }
 
 if (pagePath) {
-  const normalizedPath = normalizeJcrContentEncoding(pagePath);
+  const normalizedPath = normalizeJcrContentUnencoded(pagePath);
   window.open(requirePort(DEFAULT_PORT) + REPOBROWSER_PATH + '#' + normalizedPath);
 }

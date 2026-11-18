@@ -155,6 +155,20 @@ export const normalizeJcrContentEncoding = function (path) {
     .replace(mangledMarker, encodedMarker)
 }
 
+/**
+ * Like `normalizeJcrContentEncoding` but keeps the colon literal
+ * (`/jcr:content`), which is the form the repository browser expects.
+ */
+export const normalizeJcrContentUnencoded = function (path) {
+  if (!path || typeof path !== 'string') return path
+  const decodedMarker = '/' + JCR_CONTENT
+  const mangledMarker = '/' + JCR_CONTENT_NAMESPACE_MANGLING
+  const encodedRegex = new RegExp('(%2F|/)+jcr%3Acontent', 'ig')
+  return path
+    .replace(encodedRegex, decodedMarker)
+    .replace(mangledMarker, decodedMarker)
+}
+
 function safeDecodePath(path) {
   try {
     return decodeURIComponent(path)
